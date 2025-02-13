@@ -1,8 +1,4 @@
----
-  title: "Drought and Conflict"
-format: html
-editor: visual
----
+
   
   
 library(shiny)
@@ -175,9 +171,3 @@ server <- function(input, output, session) {
 # Run App
 shinyApp(ui, server)
 
-
-
-
-
-# Run App
-shinyApp(ui, server)
