@@ -179,5 +179,3 @@ shinyApp(ui, server)
 
 
 
-# Run App
-shinyApp(ui, server)
