@@ -1,6 +1,3 @@
-
-  
-  
 library(shiny)
 library(here)
 library(tidyverse)
@@ -11,16 +8,11 @@ library(leaflet)
 library(bslib)
 library(gee)
 
-
-
 # Load conflict datasets
 ## otherdata
 # gtd_2021 <- read_xlsx(here("data","GTD_2021Jan-June_1222dist.xlsx"))
 # gtd_full <- read_xlsx(here("data","GTD_0522dist.xlsx"))
 acled_raw <- read_csv(here("data","ACLED_Africa_Regions_1-1-1900--1-30-2025.csv"))
-
-
-
 
 acled=acled_raw |>
   mutate(longitude = as.numeric(longitude),
