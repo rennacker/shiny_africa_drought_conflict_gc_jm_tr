@@ -175,7 +175,13 @@ server <- function(input, output, session) {
 # Run App
 shinyApp(ui, server)
 
-
+######################################################################################################
+#Protocol
+# communicate about work being done
+#then
+# Don't forget to pull at the beginning of a session and make sure you're working on the main branch. 
+#Then
+# when you are done working and want to sink up you, "Commit, Pull and resolve any issues, then push" 
 
 
 
