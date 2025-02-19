@@ -1,3 +1,10 @@
+#Protocol
+# communicate about work being done
+#then
+# Don't forget to pull at the beginning of a session and make sure you're working on the main branch. 
+#Then
+# when you are done working and want to sink up you, "Commit, Pull and resolve any issues, then push" 
+
 library(shiny)
 library(here)
 library(tidyverse)
@@ -20,26 +27,11 @@ acled=acled_raw |>
   filter(!is.na(longitude), !is.na(latitude)) %>%
   mutate(event_date = dmy(event_date))  # Converts "24 January 2025" to Date format
 
+#load african district geometries (pulled separately from google earth engine)
+district_geoms <- read_csv(here("data","district_geometries_africa.csv"))
 
-# Fetch SPEI data from Google Earth Engine
-get_spei_data <- function(region, start_date, end_date) {
-  spei <- ee$ImageCollection("SPEI/SPEI_02")$
-    filterBounds(region)$
-    filterDate(start_date, end_date)$
-    mean()
-  
-  # Reduce the image collection to a numerical value over the region
-  spei_values <- spei$reduceRegion(
-    reducer = ee$Reducer$mean(),
-    geometry = region,
-    scale = 5000
-  )$getInfo()
-  
-  return(spei_values)
-}
-
-
-
+#load mean SPEIs (pulled separately from google earth engine)
+spei_data <- read_csv(here("data","Annual_SPEI_Africa_1980_2025.csv"))
 
 # Define UI
 ui <- fluidPage(
@@ -159,13 +151,4 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 
 
-######################################################################################################
-#Protocol
-# communicate about work being done
-#then
-# Don't forget to pull at the beginning of a session and make sure you're working on the main branch. 
-#Then
-# when you are done working and want to sink up you, "Commit, Pull and resolve any issues, then push" 
-
-#5bd48436512c1b5266ad224c723aaec4b5b3bf42
-
+#
